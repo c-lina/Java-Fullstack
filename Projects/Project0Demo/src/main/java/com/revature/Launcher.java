@@ -38,6 +38,9 @@ public class Launcher {
         Role r = rDAO.getRoleById(2);
         System.out.println(r);
 
+        //test out Update Role Salary
+        System.out.println(rDAO.updateRoleSalary(3,999999));
+
         //test out Insert Employee
         Employee e = new Employee("Vishnu", "Sprinivasan", 1);
         System.out.println(eDAO.insertNewEmployee(e));
@@ -47,7 +50,6 @@ public class Launcher {
         for(Employee emp: emps) {
             System.out.println(emp);
         }
-
 
     }
 }
