@@ -8,7 +8,8 @@ public interface CardDaoInterface {
     String assignNewPerson(String cardName, int duelist);
     int updateAtk(String name, int newAtk);
     int updateDef(String name, int newDef);
-    Card getCardByID(int id, Card details);
+    Card getCardByID(int id);
+    int changeNameToID(String name);
     ArrayList<Card> selectAllCards();
     Card newCard(Card card);
     Card deleteCard(Card card);

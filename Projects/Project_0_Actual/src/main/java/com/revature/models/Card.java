@@ -11,6 +11,15 @@ public class Card {
     public Card() {
     }
 
+    public Card(int card_id, int stars, String card_name, int atk, int def, int duelist_id_fk) {
+        this.card_id = card_id;
+        this.stars = stars;
+        this.card_name = card_name;
+        this.atk = atk;
+        this.def = def;
+        this.duelist_id_fk = duelist_id_fk;
+    }
+
     public Card(int stars, String card_name, int atk, int def, int duelist_id_fk) {
         this.stars = stars;
         this.card_name = card_name;
