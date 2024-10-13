@@ -3,6 +3,7 @@ package com.revature.DAOs;
 import com.revature.models.Card;
 import com.revature.utils.ConnectionUtil;
 
+import javax.xml.transform.Result;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -144,6 +145,72 @@ public class CardDAO implements CardDaoInterface{
 
     @Override
     public ArrayList<Card> selectAllCards() {
+        try(Connection conn = ConnectionUtil.getConnection()) {
+            String sql = "SELECT * FROM cards ORDER BY card_id ASC";
+
+            Statement s = conn.createStatement();
+
+            ResultSet rs = s.executeQuery(sql);
+
+            ArrayList<Card> CardList = new ArrayList<>();
+
+            while(rs.next()) {
+                Card card = new Card(
+                        rs.getInt("card_id"),
+                        rs.getInt("stars"),
+                        rs.getString("card_name"),
+                        rs.getInt("atk"),
+                        rs.getInt("def"),
+                        rs.getInt("duelist_id_fk")
+                );
+                CardList.add(card);
+            }
+            return CardList;
+        }
+        catch(SQLException e) {
+            e.printStackTrace();
+            System.out.println("Couldn't select all the cards!");
+        }
+        return null;
+    }
+
+    @Override
+    public ArrayList<Card> selectCardsByDuelist(String first_name, String last_name) {
+        try(Connection conn = ConnectionUtil.getConnection()) {
+            String sql = "SELECT * FROM cards WHERE duelist_id_fk = ?";
+
+            DuelistDAO dDAO = new DuelistDAO();
+            int id = dDAO.getDuelistIDbyName(first_name, last_name);
+
+            System.out.println(id);
+            PreparedStatement ps = conn.prepareStatement(sql);
+
+            ps.setInt(1,id);
+
+            ResultSet rs = ps.executeQuery();
+
+            ArrayList<Card> cardList = new ArrayList<>();
+
+            while(rs.next()) {
+                Card card = new Card(
+                        rs.getInt("card_id"),
+                        rs.getInt("stars"),
+                        rs.getString("card_name"),
+                        rs.getInt("atk"),
+                        rs.getInt("def"),
+                        rs.getInt("duelist_id_fk")
+                );
+                cardList.add(card);
+            }
+
+            return cardList;
+
+
+        }
+        catch(SQLException e) {
+            e.printStackTrace();
+            System.out.println("Couldn't select all cards belonging to that duelist!");
+        }
         return null;
     }
 

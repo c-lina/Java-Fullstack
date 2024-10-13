@@ -50,6 +50,17 @@ public class Launcher {
 
             System.out.println(cDAO.getCardByID(cDAO.changeNameToID("Blue Eyes White Dragon")));
 
+            System.out.println(cDAO.selectAllCards());
+            System.out.print("\n");
+            for(Card card : cDAO.selectAllCards()) {
+                System.out.println(card);
+            }
+
+            System.out.println(cDAO.selectCardsByDuelist("Joey", ""));
+            for(Card card: cDAO.selectCardsByDuelist("Joey", "")) {
+                System.out.println(card);
+            }
+
         }
         catch(SQLException e) {
             e.printStackTrace();

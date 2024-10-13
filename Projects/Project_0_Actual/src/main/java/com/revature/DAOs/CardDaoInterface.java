@@ -11,6 +11,7 @@ public interface CardDaoInterface {
     Card getCardByID(int id);
     int changeNameToID(String name);
     ArrayList<Card> selectAllCards();
+    ArrayList<Card> selectCardsByDuelist(String first_name, String last_name);
     Card newCard(Card card);
     Card deleteCard(Card card);
 }
