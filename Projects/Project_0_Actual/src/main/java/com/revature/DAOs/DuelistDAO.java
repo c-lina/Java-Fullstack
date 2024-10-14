@@ -10,13 +10,12 @@ public class DuelistDAO implements DuelistDAOInterface{
     @Override
     public Duelist insertNewDuelist(Duelist duelist) {
         try(Connection conn = ConnectionUtil.getConnection()) {
-            String sql = "INSERT INTO duelists(duelist_id, first_name, last_name) VALUES (?, ?, ?)";
+            String sql = "INSERT INTO duelists(first_name, last_name) VALUES (?, ?)";
 
             PreparedStatement ps = conn.prepareStatement(sql);
 
-            ps.setInt(1, duelist.getDuelist_id());
-            ps.setString(2, duelist.getFirst_name());
-            ps.setString(3, duelist.getLast_name());
+            ps.setString(1, duelist.getFirst_name());
+            ps.setString(2, duelist.getLast_name());
 
             ps.executeUpdate();
 

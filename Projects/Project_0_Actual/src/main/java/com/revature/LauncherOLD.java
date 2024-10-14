@@ -9,7 +9,7 @@ import com.revature.utils.ConnectionUtil;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-public class Launcher {
+public class LauncherOLD {
     public static void main(String[] args) {
         try(Connection conn = ConnectionUtil.getConnection()) {
             System.out.println("Opened connection :D");
@@ -18,9 +18,9 @@ public class Launcher {
             CardDAO cDAO = new CardDAO();
 
             //add Yami Yugi to duelist
-//            Duelist Yami_yugi = new Duelist(dDAO.selectAllDuelists().size() + 1,"Yami", "Yugi");
+            Duelist Yami_yugi = new Duelist("Yami", "Yugi");
 
-//            System.out.println(dDAO.insertNewDuelist(Yami_yugi));
+            System.out.println(dDAO.insertNewDuelist(Yami_yugi));
 
             //change Dark Magician Girl card ownership to Yami (doesn't care about original owner)
             System.out.println(cDAO.assignNewPerson("Dark Magician Girl", dDAO.getDuelistIDbyName("Yami", " ")));
@@ -60,13 +60,13 @@ public class Launcher {
                 System.out.println(card);
             }
 
-//            Card blueEyes = new Card(3, 8, "Blue Eyes White Dragon", 3000, 2500, dDAO.getDuelistIDbyName("", "Kaiba"));
-//            System.out.println(blueEyes);
-//            cDAO.newCard(blueEyes);
+            Card blueEyes = new Card(3, 8, "Blue Eyes White Dragon", 3000, 2500, dDAO.getDuelistIDbyName("", "Kaiba"));
+            System.out.println(blueEyes);
+            cDAO.newCard(blueEyes);
 
-//            Card kuriboh = new Card(cDAO.selectAllCards().size() + 2, 1, "Kuriboh", 300, 200, dDAO.getDuelistIDbyName("Yugi", ""));
-//            System.out.println(kuriboh);
-//            cDAO.newCard(kuriboh);
+            Card kuriboh = new Card(1, "Kuriboh", 300, 200, dDAO.getDuelistIDbyName("Yugi", ""));
+            System.out.println(kuriboh);
+            cDAO.newCard(kuriboh);
 
 //            System.out.println(cDAO.changeNameToID("Blue Eyes White Dragon"));
 //            System.out.println(cDAO.deleteCard(cDAO.changeNameToID("Blue Eyes White Dragon")));

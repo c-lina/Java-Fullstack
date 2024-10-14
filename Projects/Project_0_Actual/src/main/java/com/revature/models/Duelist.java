@@ -14,6 +14,11 @@ public class Duelist {
         this.last_name = last_name;
     }
 
+    public Duelist(String first_name, String last_name) {
+        this.first_name = first_name;
+        this.last_name = last_name;
+    }
+
     public int getDuelist_id() {
         return duelist_id;
     }

@@ -217,15 +217,14 @@ public class CardDAO implements CardDaoInterface{
     @Override
     public Card newCard(Card card) {
         try(Connection conn = ConnectionUtil.getConnection()) {
-            String sql = "INSERT into cards(card_id, stars, card_name, atk, def, duelist_id_fk) VALUES (?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT into cards(stars, card_name, atk, def, duelist_id_fk) VALUES (?, ?, ?, ?, ?)";
             PreparedStatement ps = conn.prepareStatement(sql);
 
-            ps.setInt(1, card.getCard_id());
-            ps.setInt(2, card.getStars());
-            ps.setString(3, card.getCard_name());
-            ps.setInt(4, card.getAtk());
-            ps.setInt(5, card.getDef());
-            ps.setInt(6, card.getDuelist_id_fk());
+            ps.setInt(1, card.getStars());
+            ps.setString(2, card.getCard_name());
+            ps.setInt(3, card.getAtk());
+            ps.setInt(4, card.getDef());
+            ps.setInt(5, card.getDuelist_id_fk());
 
             ps.executeUpdate();
         }
