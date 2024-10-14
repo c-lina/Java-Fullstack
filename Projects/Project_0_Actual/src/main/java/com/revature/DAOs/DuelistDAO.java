@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class DuelistDAO implements DuelistDAOInterface{
     @Override
-    public Duelist importNewDuelist(Duelist duelist) {
+    public Duelist insertNewDuelist(Duelist duelist) {
         try(Connection conn = ConnectionUtil.getConnection()) {
             String sql = "INSERT INTO duelists(duelist_id, first_name, last_name) VALUES (?, ?, ?)";
 

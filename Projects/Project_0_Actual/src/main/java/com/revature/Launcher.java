@@ -18,9 +18,9 @@ public class Launcher {
             CardDAO cDAO = new CardDAO();
 
             //add Yami Yugi to duelist
-            Duelist Yami_yugi = new Duelist(6,"Yami", "Yugi");
+//            Duelist Yami_yugi = new Duelist(dDAO.selectAllDuelists().size() + 1,"Yami", "Yugi");
 
-            System.out.println(dDAO.importNewDuelist(Yami_yugi));
+//            System.out.println(dDAO.insertNewDuelist(Yami_yugi));
 
             //change Dark Magician Girl card ownership to Yami (doesn't care about original owner)
             System.out.println(cDAO.assignNewPerson("Dark Magician Girl", dDAO.getDuelistIDbyName("Yami", " ")));
@@ -40,14 +40,12 @@ public class Launcher {
             //Prints the card_id by the name
             System.out.println(cDAO.changeNameToID("Dark Magician"));
 
+            //shows the before and after of changing the blue eyes white dragon atk and def
+            //to that of the blue eyes ultimate dragon
             System.out.println(cDAO.changeNameToID("Blue Eyes White Dragon"));
-
             System.out.println(cDAO.getCardByID(cDAO.changeNameToID("Blue Eyes White Dragon")));
-
-            System.out.println(cDAO.updateAtk("Blue Eyes White Dragon", 3000));
-
-            System.out.println(cDAO.updateDef("Blue Eyes White Dragon", 2500));
-
+            System.out.println(cDAO.updateAtk("Blue Eyes White Dragon", 4500));
+            System.out.println(cDAO.updateDef("Blue Eyes White Dragon", 3800));
             System.out.println(cDAO.getCardByID(cDAO.changeNameToID("Blue Eyes White Dragon")));
 
             System.out.println(cDAO.selectAllCards());
@@ -56,10 +54,26 @@ public class Launcher {
                 System.out.println(card);
             }
 
+            //print out all the cards that belong to joey wheeler
             System.out.println(cDAO.selectCardsByDuelist("Joey", ""));
             for(Card card: cDAO.selectCardsByDuelist("Joey", "")) {
                 System.out.println(card);
             }
+
+//            Card blueEyes = new Card(3, 8, "Blue Eyes White Dragon", 3000, 2500, dDAO.getDuelistIDbyName("", "Kaiba"));
+//            System.out.println(blueEyes);
+//            cDAO.newCard(blueEyes);
+
+//            Card kuriboh = new Card(cDAO.selectAllCards().size() + 2, 1, "Kuriboh", 300, 200, dDAO.getDuelistIDbyName("Yugi", ""));
+//            System.out.println(kuriboh);
+//            cDAO.newCard(kuriboh);
+
+//            System.out.println(cDAO.changeNameToID("Blue Eyes White Dragon"));
+//            System.out.println(cDAO.deleteCard(cDAO.changeNameToID("Blue Eyes White Dragon")));
+
+
+
+
 
         }
         catch(SQLException e) {

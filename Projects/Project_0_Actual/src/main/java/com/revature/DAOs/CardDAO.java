@@ -216,11 +216,41 @@ public class CardDAO implements CardDaoInterface{
 
     @Override
     public Card newCard(Card card) {
+        try(Connection conn = ConnectionUtil.getConnection()) {
+            String sql = "INSERT into cards(card_id, stars, card_name, atk, def, duelist_id_fk) VALUES (?, ?, ?, ?, ?, ?)";
+            PreparedStatement ps = conn.prepareStatement(sql);
+
+            ps.setInt(1, card.getCard_id());
+            ps.setInt(2, card.getStars());
+            ps.setString(3, card.getCard_name());
+            ps.setInt(4, card.getAtk());
+            ps.setInt(5, card.getDef());
+            ps.setInt(6, card.getDuelist_id_fk());
+
+            ps.executeUpdate();
+        }
+        catch(SQLException e) {
+            e.printStackTrace();
+            System.out.println("Couldn't add new card!");
+        }
         return null;
     }
 
     @Override
-    public Card deleteCard(Card card) {
+    public Card deleteCard(int id) {
+        try(Connection conn = ConnectionUtil.getConnection()) {
+            String sql = "DELETE FROM cards WHERE card_id = ?";
+
+            PreparedStatement ps = conn.prepareStatement(sql);
+
+            ps.setInt(1, id);
+
+            ps.executeUpdate();
+        }
+        catch(SQLException e) {
+            e.printStackTrace();
+            System.out.println("Couldn't delete the card");
+        }
         return null;
     }
 }
