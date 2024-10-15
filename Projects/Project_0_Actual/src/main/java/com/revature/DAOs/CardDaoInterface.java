@@ -6,12 +6,12 @@ import java.util.ArrayList;
 
 public interface CardDaoInterface {
     String assignNewPerson(String cardName, int duelist);
-    int updateAtk(String name, int newAtk);
-    int updateDef(String name, int newDef);
+    int updateAtk(int id, int newAtk);
+    int updateDef(int id, int newDef);
     Card getCardByID(int id);
-    int changeNameToID(String name);
+    ArrayList<Integer> changeNameToIDs(String name);
     ArrayList<Card> selectAllCards();
-    ArrayList<Card> selectCardsByDuelist(String first_name, String last_name);
+    ArrayList<Card> selectCardsByDuelist(int id);
     Card newCard(Card card);
     Card deleteCard(int id);
 }

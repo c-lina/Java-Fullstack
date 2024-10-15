@@ -32,12 +32,9 @@ public class CardDAO implements CardDaoInterface{
     }
 
     @Override
-    public int updateAtk(String name, int newAtk) {
+    public int updateAtk(int id, int newAtk) {
         try(Connection conn = ConnectionUtil.getConnection()) {
             String sql = "UPDATE cards SET atk = ? WHERE card_id = ?";
-
-            CardDAO cDAO = new CardDAO();
-            int id = cDAO.changeNameToID(name);
 
             PreparedStatement ps = conn.prepareStatement(sql);
 
@@ -57,12 +54,9 @@ public class CardDAO implements CardDaoInterface{
     }
 
     @Override
-    public int updateDef(String name, int newDef) {
+    public int updateDef(int id, int newDef) {
         try(Connection conn = ConnectionUtil.getConnection()) {
             String sql = "UPDATE cards SET def = ? WHERE card_id = ?";
-
-            CardDAO cDAO = new CardDAO();
-            int id = cDAO.changeNameToID(name);
 
             PreparedStatement ps = conn.prepareStatement(sql);
 
@@ -112,7 +106,7 @@ public class CardDAO implements CardDaoInterface{
     }
 
     @Override
-    public int changeNameToID(String name) {
+    public ArrayList<Integer> changeNameToIDs(String name) {
         try(Connection conn = ConnectionUtil.getConnection()) {
             String sql = "SELECT * FROM cards WHERE card_name = ?";
 
@@ -122,17 +116,12 @@ public class CardDAO implements CardDaoInterface{
 
             ResultSet rs = ps.executeQuery();
 
-            if(rs.next()) {
-                Card card = new Card(
-                        rs.getInt("card_id"),
-                        rs.getInt("stars"),
-                        rs.getString("card_name"),
-                        rs.getInt("atk"),
-                        rs.getInt("def"),
-                        rs.getInt("duelist_id_fk")
-                );
-                return card.getCard_id();
+            ArrayList<Integer> nums = new ArrayList<Integer>();
+
+            while(rs.next()) {
+                nums.add(rs.getInt("card_id"));
             }
+            return nums;
 
 
         }
@@ -140,7 +129,7 @@ public class CardDAO implements CardDaoInterface{
             e.printStackTrace();
             System.out.println("Couldn't change the card name to ID!");
         }
-        return 0;
+        return null;
     }
 
     @Override
@@ -175,14 +164,10 @@ public class CardDAO implements CardDaoInterface{
     }
 
     @Override
-    public ArrayList<Card> selectCardsByDuelist(String first_name, String last_name) {
+    public ArrayList<Card> selectCardsByDuelist(int id) {
         try(Connection conn = ConnectionUtil.getConnection()) {
             String sql = "SELECT * FROM cards WHERE duelist_id_fk = ?";
 
-            DuelistDAO dDAO = new DuelistDAO();
-            int id = dDAO.getDuelistIDbyName(first_name, last_name);
-
-            System.out.println(id);
             PreparedStatement ps = conn.prepareStatement(sql);
 
             ps.setInt(1,id);

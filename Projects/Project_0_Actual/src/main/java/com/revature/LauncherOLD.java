@@ -38,15 +38,15 @@ public class LauncherOLD {
             System.out.println(cDAO.getCardByID(2));
 
             //Prints the card_id by the name
-            System.out.println(cDAO.changeNameToID("Dark Magician"));
+            System.out.println(cDAO.changeNameToIDs("Dark Magician"));
 
             //shows the before and after of changing the blue eyes white dragon atk and def
             //to that of the blue eyes ultimate dragon
-            System.out.println(cDAO.changeNameToID("Blue Eyes White Dragon"));
-            System.out.println(cDAO.getCardByID(cDAO.changeNameToID("Blue Eyes White Dragon")));
-            System.out.println(cDAO.updateAtk("Blue Eyes White Dragon", 4500));
-            System.out.println(cDAO.updateDef("Blue Eyes White Dragon", 3800));
-            System.out.println(cDAO.getCardByID(cDAO.changeNameToID("Blue Eyes White Dragon")));
+            System.out.println("Blue Eyes White Dragon");
+            System.out.println(cDAO.changeNameToIDs("Blue Eyes White Dragon"));
+            System.out.println(cDAO.updateAtk(3, 4500));
+            System.out.println(cDAO.updateDef(3, 3800));
+            System.out.println(cDAO.getCardByID(3));
 
             System.out.println(cDAO.selectAllCards());
             System.out.print("\n");
@@ -55,18 +55,27 @@ public class LauncherOLD {
             }
 
             //print out all the cards that belong to joey wheeler
-            System.out.println(cDAO.selectCardsByDuelist("Joey", ""));
-            for(Card card: cDAO.selectCardsByDuelist("Joey", "")) {
+            System.out.println("All Joey's cards");
+            System.out.println(cDAO.selectCardsByDuelist(3));
+            for(Card card: cDAO.selectCardsByDuelist(3)) {
                 System.out.println(card);
             }
 
-            Card blueEyes = new Card(3, 8, "Blue Eyes White Dragon", 3000, 2500, dDAO.getDuelistIDbyName("", "Kaiba"));
-            System.out.println(blueEyes);
-            cDAO.newCard(blueEyes);
+//            Card blueEyes = new Card(8, "Blue Eyes White Dragon", 3000, 2500, dDAO.getDuelistIDbyName("", "Kaiba"));
+//            System.out.println(blueEyes);
+//            cDAO.newCard(blueEyes);
+//
+//            Card kuriboh = new Card(1, "Kuriboh", 300, 200, dDAO.getDuelistIDbyName("Yugi", ""));
+//            System.out.println(kuriboh);
+//            cDAO.newCard(kuriboh);
 
-            Card kuriboh = new Card(1, "Kuriboh", 300, 200, dDAO.getDuelistIDbyName("Yugi", ""));
-            System.out.println(kuriboh);
-            cDAO.newCard(kuriboh);
+            System.out.println(cDAO.changeNameToIDs("Blue Eyes White Dragon"));
+            System.out.println(cDAO.selectCardsByDuelist(2));
+            for(Card card: cDAO.selectCardsByDuelist(1)) {
+                System.out.println(card);
+            }
+
+
 
 //            System.out.println(cDAO.changeNameToID("Blue Eyes White Dragon"));
 //            System.out.println(cDAO.deleteCard(cDAO.changeNameToID("Blue Eyes White Dragon")));
