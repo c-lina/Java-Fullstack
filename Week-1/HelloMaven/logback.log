@@ -1,0 +1,5 @@
+13:53:13.451 [main] INFO  com.revature.Calculator - Dividing 15.0 by 2.0
+13:54:57.951 [main] INFO  com.revature.Calculator - Dividing 15.0 by 2.0
+13:57:31.537 [main] INFO  com.revature.Calculator - Adding 5 and 10
+13:57:31.540 [main] INFO  com.revature.Calculator - Adding -20 and -40
+13:57:31.540 [main] INFO  com.revature.Calculator - Dividing 15.0 by 2.0

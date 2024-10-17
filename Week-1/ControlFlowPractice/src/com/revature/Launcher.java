@@ -14,6 +14,7 @@ public class Launcher {
                 System.out.println("Stay home");
             }
         }
+
     }
 
 }

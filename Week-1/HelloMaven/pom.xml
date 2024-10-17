@@ -18,6 +18,26 @@
 
     <dependencies>
 
+        <!-- JUnit dependency - we can't write any tests without this -->
+        <!-- https://mvnrepository.com/artifact/junit/junit -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.4.14</version>
+        </dependency>
+
+
+
     </dependencies>
+
+    <!-- YOU MUST MAVEN REFRESH WHEN YOU GET THIS EDIT THE POM.XML OR YOUR CHANGES WON'T TAKE -->
+    <!-- It's common for a dependency version to have this error until you refresh -->
+    <!-- We use Maven to allow us to use another tool to allow us to write test -->
 
 </project>
