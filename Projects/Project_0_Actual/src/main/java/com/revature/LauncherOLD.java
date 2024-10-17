@@ -24,7 +24,7 @@ public class LauncherOLD {
 
             //change Dark Magician Girl card ownership to Yami Yugi
             System.out.println("Card Ownership Change");
-            System.out.println(cDAO.assignNewPerson(2, 6));
+            cDAO.assignNewPerson(2, 6);
 
             //Prints out all the records in Duelists
             System.out.println(dDAO.selectAllDuelists());

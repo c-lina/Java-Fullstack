@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class CardDAO implements CardDaoInterface{
 
     @Override
-    public int assignNewPerson(int cardID, int duelistID) {
+    public void assignNewPerson(int cardID, int duelistID) {
         try(Connection conn = ConnectionUtil.getConnection()) {
             String sql = "UPDATE cards SET duelist_id_fk = ? WHERE card_id = ?";
 
@@ -21,14 +21,13 @@ public class CardDAO implements CardDaoInterface{
 
             ps.executeUpdate();
 
-            return duelistID;
+            System.out.println("Card ownership changed succesfully!");
 
         }
         catch(SQLException e) {
             e.printStackTrace();
             System.out.println("Couldn't assign this card to another duelist!");
         }
-        return 0;
     }
 
     @Override

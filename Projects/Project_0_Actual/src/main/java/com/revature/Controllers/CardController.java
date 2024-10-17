@@ -119,8 +119,8 @@ public class CardController {
                 ctx.status(400);
             }
             else {
-                int card = cDAO.assignNewPerson(card_id, duelist_id);
-                ctx.json(card);
+                cDAO.assignNewPerson(card_id, duelist_id);
+                ctx.result("Card ownership changed successfully!");
                 ctx.status(200);
             }
         }
