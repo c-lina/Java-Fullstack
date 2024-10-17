@@ -20,13 +20,11 @@ public class LauncherOLD {
             //add Yami Yugi to duelist
             Duelist Yami_yugi = new Duelist("Yami", "Yugi");
 
-            System.out.println(dDAO.insertNewDuelist(Yami_yugi));
+//            System.out.println(dDAO.insertNewDuelist(Yami_yugi));
 
-            //change Dark Magician Girl card ownership to Yami (doesn't care about original owner)
-            System.out.println(cDAO.assignNewPerson("Dark Magician Girl", dDAO.getDuelistIDbyName("Yami", " ")));
-
-            //Find out which ID Kaiba has
-            System.out.println(dDAO.getDuelistIDbyName("Seto", " "));
+            //change Dark Magician Girl card ownership to Yami Yugi
+            System.out.println("Card Ownership Change");
+            System.out.println(cDAO.assignNewPerson(2, 6));
 
             //Prints out all the records in Duelists
             System.out.println(dDAO.selectAllDuelists());
@@ -74,6 +72,11 @@ public class LauncherOLD {
             for(Card card: cDAO.selectCardsByDuelist(1)) {
                 System.out.println(card);
             }
+            System.out.println(dDAO.getDuelistByID(1));
+            System.out.println(dDAO.getDuelistbyName("Seto", ""));
+            System.out.println(dDAO.getDuelistbyName("Yugi", "Yugi"));
+//            System.out.println(dDAO.selectAllDuelists());
+
 
 
 

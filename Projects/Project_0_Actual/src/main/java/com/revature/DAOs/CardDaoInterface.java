@@ -5,7 +5,7 @@ import com.revature.models.Card;
 import java.util.ArrayList;
 
 public interface CardDaoInterface {
-    String assignNewPerson(String cardName, int duelist);
+    int assignNewPerson(int cardID, int duelist);
     int updateAtk(int id, int newAtk);
     int updateDef(int id, int newDef);
     Card getCardByID(int id);

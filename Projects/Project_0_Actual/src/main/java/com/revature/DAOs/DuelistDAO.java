@@ -58,7 +58,7 @@ public class DuelistDAO implements DuelistDAOInterface{
     }
 
     @Override
-    public int getDuelistIDbyName(String first_name, String last_name) {
+    public ArrayList<Duelist> getDuelistbyName(String first_name, String last_name) {
         try(Connection conn = ConnectionUtil.getConnection()) {
             String sql = "SELECT * FROM duelists WHERE first_name LIKE ? OR last_name LIKE ?";
 
@@ -69,19 +69,51 @@ public class DuelistDAO implements DuelistDAOInterface{
 
             ResultSet rs = ps.executeQuery();
 
+            ArrayList<Duelist> duelistList = new ArrayList<>();
+
+            while(rs.next()) {
+                Duelist duelist = new Duelist(
+                        rs.getInt("duelist_id"),
+                        rs.getString("first_name"),
+                        rs.getString("last_name")
+                );
+                duelistList.add(duelist);
+            }
+            return duelistList;
+        }
+        catch(SQLException e) {
+            e.printStackTrace();
+            System.out.println("Couldn't get duelist id by name!");
+        }
+        return null;
+    }
+
+    @Override
+    public Duelist getDuelistByID(int id) {
+        try(Connection conn = ConnectionUtil.getConnection()) {
+            String sql = "SELECT * FROM duelists WHERE duelist_id = ?";
+
+            PreparedStatement ps = conn.prepareStatement(sql);
+
+            ps.setInt(1, id);
+
+            ResultSet rs = ps.executeQuery();
+
             if(rs.next()) {
                 Duelist duelist = new Duelist(
                         rs.getInt("duelist_id"),
                         rs.getString("first_name"),
                         rs.getString("last_name")
                 );
-                return duelist.getDuelist_id();
+                return duelist;
             }
+
+
         }
-        catch(SQLException e) {
+        catch(SQLException e){
             e.printStackTrace();
-            System.out.println("Couldn't get duelist id by name!");
+            System.out.println("Couldn't get duelist by ID!");
         }
-        return 0;
+        return null;
     }
 }

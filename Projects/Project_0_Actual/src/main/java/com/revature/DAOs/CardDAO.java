@@ -10,25 +10,25 @@ import java.util.ArrayList;
 public class CardDAO implements CardDaoInterface{
 
     @Override
-    public String assignNewPerson(String cardName, int duelistID) {
+    public int assignNewPerson(int cardID, int duelistID) {
         try(Connection conn = ConnectionUtil.getConnection()) {
-            String sql = "UPDATE cards SET duelist_id_fk = ? WHERE card_name = ?";
+            String sql = "UPDATE cards SET duelist_id_fk = ? WHERE card_id = ?";
 
             PreparedStatement ps = conn.prepareStatement(sql);
 
             ps.setInt(1, duelistID);
-            ps.setString(2, cardName);
+            ps.setInt(2, cardID);
 
             ps.executeUpdate();
 
-            return cardName;
+            return duelistID;
 
         }
         catch(SQLException e) {
             e.printStackTrace();
             System.out.println("Couldn't assign this card to another duelist!");
         }
-        return null;
+        return 0;
     }
 
     @Override

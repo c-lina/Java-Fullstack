@@ -24,3 +24,6 @@ values (7, 'Dark Magician', 2500, 2100, 1), ('6', 'Dark Magician Girl', 2000, 17
 select * from duelists;
 
 select * from cards order by card_id asc;
+
+drop table cards;
+drop table duelists;
