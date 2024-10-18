@@ -20,21 +20,6 @@ public class Card {
         this.duelist_id_fk = duelist_id_fk;
     }
 
-    public Card(int stars, String card_name, int atk, int def, int duelist_id_fk) {
-        this.stars = stars;
-        this.card_name = card_name;
-        this.atk = atk;
-        this.def = def;
-        this.duelist_id_fk = duelist_id_fk;
-    }
-
-    public Card(int stars, String card_name, int atk, int def) {
-        this.stars = stars;
-        this.card_name = card_name;
-        this.atk = atk;
-        this.def = def;
-    }
-
     public int getCard_id() {
         return card_id;
     }

@@ -21,7 +21,7 @@ public class CardDAO implements CardDaoInterface{
 
             ps.executeUpdate();
 
-            System.out.println("Card ownership changed succesfully!");
+            System.out.println("Card ownership changed successfully!");
 
         }
         catch(SQLException e) {
@@ -87,6 +87,7 @@ public class CardDAO implements CardDaoInterface{
 
             if(rs.next()) {
                 Card card = new Card(
+                        rs.getInt("card_id"),
                         rs.getInt("stars"),
                         rs.getString("card_name"),
                         rs.getInt("atk"),
@@ -211,6 +212,8 @@ public class CardDAO implements CardDaoInterface{
             ps.setInt(5, card.getDuelist_id_fk());
 
             ps.executeUpdate();
+
+            return card;
         }
         catch(SQLException e) {
             e.printStackTrace();

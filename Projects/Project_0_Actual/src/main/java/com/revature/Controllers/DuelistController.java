@@ -40,7 +40,7 @@ public class DuelistController {
         Duelist duelist = ctx.bodyAsClass(Duelist.class);
 
         if(duelist.getFirst_name().isBlank() && duelist.getLast_name().isBlank()) {
-            ctx.result("Both Parameters cannot be empty");
+            ctx.result("Both parameters cannot be empty");
             ctx.status(404);
         }
         else if(duelist.getFirst_name() == null && duelist.getLast_name() == null) {

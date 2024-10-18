@@ -43,6 +43,13 @@ public class LauncherNEW {
         //Assign a card to a new duelist
         app.patch("/Cards/Transfer/{id}", cc.AssignToNewDuelistHandler);
 
+        //Get all the indexes of the cards matching the name
+        app.get("/CardsByName", cc.ChangeNametoIDsHandler);
 
+        //Insert a new card
+        app.post("/Cards", cc.InsertCardHandler);
+
+        //Delete card
+        app.delete("/Cards", cc.DeleteCardHandler);
     }
 }
