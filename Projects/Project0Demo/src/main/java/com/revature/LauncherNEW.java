@@ -1,5 +1,6 @@
 package com.revature;
 
+import com.revature.controllers.AutoController;
 import com.revature.controllers.EmployeeController;
 import com.revature.controllers.RoleController;
 import io.javalin.Javalin;
@@ -9,8 +10,16 @@ public class LauncherNEW {
     public static void main(String[] args) {
 
         //Typical Javalin setup Syntax
-
         Javalin app = Javalin.create().start(7700);
+
+        //BEFORE HANDLER! This is what's checking for a a not null session to see if a user is logged in
+        //If a user is not logged in (Session == null), then send back a 401 and tell them to log in
+        app.before("/employees", ctx -> {
+            if(AutoController.ses == null) {
+                System.out.println("Session is null!");
+                throw new IllegalArgumentException("You must log in before doing this");
+            }
+        });
 
         /*
 
@@ -28,6 +37,7 @@ public class LauncherNEW {
         //TODO: Instantiate Controllers
         EmployeeController ec = new EmployeeController();
         RoleController rc = new RoleController();
+        AutoController ac = new AutoController();
 
         //Get All Employees
         /*
@@ -58,5 +68,7 @@ public class LauncherNEW {
 
         //Update role salary
         app.patch("/roles/{id}", rc.updateRoleSalary);
+
+        app.post("/auth", ac.loginHandler);
     }
 }
