@@ -4,6 +4,7 @@ import com.revature.DTOs.IncomingTicketDTO;
 import com.revature.models.Ticket;
 import com.revature.services.TicketService;
 import com.revature.services.UserService;
+import jakarta.servlet.http.HttpServlet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
