@@ -2,11 +2,13 @@ package com.revature.services;
 
 import com.revature.DAOs.TicketDAO;
 import com.revature.DAOs.UserDAO;
+import com.revature.models.Ticket;
 import com.revature.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -36,6 +38,15 @@ public class UserService {
         }
         userDAO.save(newUser);
         return newUser;
+    }
+
+    public List<Ticket> getListByUserId(int id) {
+        Optional<User> user = userDAO.findById(id);
+        if(user.isEmpty()) {
+            throw new IllegalArgumentException("Cannot find employee id: " + id);
+        }
+
+        return user.get().getTicketList();
     }
 
 

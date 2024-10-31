@@ -32,23 +32,45 @@ public class TicketService {
         Ticket ticket = new Ticket(0, newticketDTO.getDescription(), newticketDTO.getAmount(), newticketDTO.getStatus(), null);
         Optional<User> user = userDAO.findById(newticketDTO.getUserIdFK());
         if(user.isEmpty()) {
-            throw new IllegalArgumentException("The user does not exist");
+            throw new IllegalArgumentException("That user does not exist");
         }
-
         ticket.setUser(user.get());
         ticketDAO.save(ticket);
         return ticket;
 
     }
 
-    public List<Ticket> getListByUserId(int id) {
-        Optional<User> user = userDAO.findById(id);
-        if(user.isEmpty()) {
-            throw new IllegalArgumentException("Cannot find employee id: " + id);
+    public String changeStatus(int id, String newStatus) {
+        Optional<Ticket> ticket = ticketDAO.findById(id);
+        if(ticket.isEmpty()) {
+            throw new IllegalArgumentException("That ticket does not exist");
         }
-
-        return user.get().getTicketList();
+        //Not needed but wanted to make casing irrelevant
+        newStatus = newStatus.toUpperCase();
+        String newStats = "" + newStatus.charAt(0);
+        newStatus = newStatus.toLowerCase();
+        for(int i = 1; i < newStatus.length(); i++) {
+            newStats = newStats + newStatus.charAt(i);
+        }
+        //Check to see if the input was either accepted or denied
+        if(newStats.equals("Accepted") || newStats.equals("Denied")) {
+            //Change the status
+            ticket.get().setStatus(newStats);
+            ticketDAO.save(ticket.get());
+            return "Ticket ID: " + ticket.get().getTicketId() + "'s status has been updated to " + ticket.get().getStatus();
+        }
+        else {
+            throw new IllegalArgumentException("That is not a valid status type!");
+        }
     }
+
+    public List<Ticket> allPendingTickets() {
+        List<Ticket> ticketList = ticketDAO.findAllByStatus("Pending");
+        return ticketList;
+    }
+
+
+
 
 
 }

@@ -35,4 +35,20 @@ public class TicketController {
         System.out.println(newTicket);
         return ResponseEntity.ok().body(ticketService.addTicket(newTicket));
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<List<Ticket>> getTicketsById(@PathVariable int id) {
+        return ResponseEntity.ok().body(userService.getListByUserId(id));
+    }
+
+    @PatchMapping("/status/{id}")
+    public ResponseEntity<String> changeStatus(@PathVariable int id, @RequestBody String newStatus) {
+        return ResponseEntity.status(202).body(ticketService.changeStatus(id, newStatus));
+    }
+
+    @GetMapping("/status/pending")
+    public ResponseEntity<List<Ticket>> getAllPending() {
+        List<Ticket> ticketList = ticketService.allPendingTickets();
+        return ResponseEntity.ok().body(ticketList);
+    }
 }
