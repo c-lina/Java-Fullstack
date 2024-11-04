@@ -1,6 +1,7 @@
 package com.revature.controllers;
 
 import com.revature.DTOs.LoginDTO;
+import com.revature.models.User;
 import com.revature.services.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,11 +17,12 @@ public class LoginController {
     }
 
     @PostMapping
-    public ResponseEntity<String> login(@RequestBody LoginDTO loginDTO) {
+    public ResponseEntity<User> login(@RequestBody LoginDTO loginDTO) {
         return ResponseEntity.ok().body(loginService.login(loginDTO));
     }
 
     //Exception Handling
+    @ExceptionHandler
     public ResponseEntity<String> illegalArgumentHandler(IllegalArgumentException e) {
         return ResponseEntity.status(400).body(e.getMessage());
     }

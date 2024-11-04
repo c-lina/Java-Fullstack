@@ -1,5 +1,6 @@
 package com.revature.controllers;
 
+import com.revature.DTOs.OutgoingUserDTO;
 import com.revature.models.Ticket;
 import com.revature.models.User;
 import com.revature.services.UserService;
@@ -21,8 +22,8 @@ public class UserController {
     }
 
     @GetMapping
-    public ResponseEntity<List<User>> getAllUsers() {
-        List<User> userList = userService.getUsers();
+    public ResponseEntity<List<OutgoingUserDTO>> getAllUsers() {
+        List<OutgoingUserDTO> userList = userService.getUsers();
         return ResponseEntity.ok().body(userList);
     }
 
@@ -30,5 +31,10 @@ public class UserController {
     public ResponseEntity<User> registerUser(@RequestBody User user) {
         User newUser = userService.addUser(user);
         return ResponseEntity.status(201).body(newUser);
+    }
+
+    @ExceptionHandler
+    public ResponseEntity<String> illegalArgumentHandler(IllegalArgumentException e) {
+        return ResponseEntity.status(400).body(e.getMessage());
     }
 }

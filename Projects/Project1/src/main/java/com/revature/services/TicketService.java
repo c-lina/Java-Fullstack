@@ -4,6 +4,7 @@ import com.revature.DAOs.TicketDAO;
 import com.revature.DAOs.UserDAO;
 import com.revature.DTOs.IncomingTicketDTO;
 import com.revature.DTOs.IncomingTicketDTO;
+import com.revature.DTOs.OutgoingUserDTO;
 import com.revature.models.Ticket;
 import com.revature.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,13 +29,15 @@ public class TicketService {
         return ticketDAO.findAll();
     }
 
-    public Ticket addTicket(IncomingTicketDTO newticketDTO) {
-        Ticket ticket = new Ticket(0, newticketDTO.getDescription(), newticketDTO.getAmount(), newticketDTO.getStatus(), null);
-        Optional<User> user = userDAO.findById(newticketDTO.getUserIdFK());
+    public Ticket addTicket(IncomingTicketDTO newticket) {
+        Ticket ticket = new Ticket(0, newticket.getDescription(), newticket.getAmount(), newticket.getStatus(), null);
+        //checks to see if it's set to an existing person
+        Optional<User> user = userDAO.findById(newticket.getUserIdFK());
         if(user.isEmpty()) {
             throw new IllegalArgumentException("That user does not exist");
         }
         ticket.setUser(user.get());
+
         ticketDAO.save(ticket);
         return ticket;
 
@@ -65,8 +68,17 @@ public class TicketService {
     }
 
     public List<Ticket> allPendingTickets() {
-        List<Ticket> ticketList = ticketDAO.findAllByStatus("Pending");
-        return ticketList;
+        return ticketDAO.findAllByStatus("Pending");
+
+    }
+
+    public List<Ticket> getTicketListByUserId(int id) {
+        Optional<User> user = userDAO.findById(id);
+        if(user.isEmpty()) {
+            throw new IllegalArgumentException("Cannot find employee id: " + id);
+        }
+
+        return user.get().getTicketList();
     }
 
 

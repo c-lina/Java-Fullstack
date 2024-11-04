@@ -2,11 +2,13 @@ package com.revature.services;
 
 import com.revature.DAOs.TicketDAO;
 import com.revature.DAOs.UserDAO;
+import com.revature.DTOs.OutgoingUserDTO;
 import com.revature.models.Ticket;
 import com.revature.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,8 +21,14 @@ public class UserService {
         this.userDAO = userDAO;
     }
 
-    public List<User> getUsers() {
-        return userDAO.findAll();
+    public List<OutgoingUserDTO> getUsers() {
+        List<OutgoingUserDTO> outgoingUsers = new ArrayList<>();
+        List<User> userlist = userDAO.findAll();
+        for(User user: userlist) {
+            outgoingUsers.add(new OutgoingUserDTO(user.getFirstName(), user.getLastName(), user.getUsername()));
+        }
+
+        return outgoingUsers;
     }
 
     public User addUser(User newUser) {
@@ -37,16 +45,8 @@ public class UserService {
             throw new IllegalArgumentException("Please enter a valid password!");
         }
         userDAO.save(newUser);
+
         return newUser;
-    }
-
-    public List<Ticket> getListByUserId(int id) {
-        Optional<User> user = userDAO.findById(id);
-        if(user.isEmpty()) {
-            throw new IllegalArgumentException("Cannot find employee id: " + id);
-        }
-
-        return user.get().getTicketList();
     }
 
 

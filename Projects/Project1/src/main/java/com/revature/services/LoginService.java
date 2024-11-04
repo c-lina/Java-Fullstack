@@ -17,7 +17,7 @@ public class LoginService {
         this.userDAO = userDAO;
     }
 
-    public String login(LoginDTO loginDTO) {
+    public User login(LoginDTO loginDTO) {
         Optional<User> user = userDAO.findByUsername(loginDTO.getUsername());
         System.out.println(loginDTO);
         System.out.println(user);
@@ -26,10 +26,10 @@ public class LoginService {
         }
 
         if(user.get().getPassword().equals(loginDTO.getPassword())) {
-            return("Login Successful! Welcome " + user.get().getFirstName() + " " + user.get().getLastName());
+            return user.get();
         }
         else {
-            throw new IllegalArgumentException("Incorrect username or password!");
+            return user.get();
         }
 
     }

@@ -36,9 +36,9 @@ public class TicketController {
         return ResponseEntity.ok().body(ticketService.addTicket(newTicket));
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/user/{id}")
     public ResponseEntity<List<Ticket>> getTicketsById(@PathVariable int id) {
-        return ResponseEntity.ok().body(userService.getListByUserId(id));
+        return ResponseEntity.ok().body(ticketService.getTicketListByUserId(id));
     }
 
     @PatchMapping("/status/{id}")
@@ -50,5 +50,10 @@ public class TicketController {
     public ResponseEntity<List<Ticket>> getAllPending() {
         List<Ticket> ticketList = ticketService.allPendingTickets();
         return ResponseEntity.ok().body(ticketList);
+    }
+
+    @ExceptionHandler
+    public ResponseEntity<String> illegalArgumentHandler(IllegalArgumentException e) {
+        return ResponseEntity.status(400).body(e.getMessage());
     }
 }

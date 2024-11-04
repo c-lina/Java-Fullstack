@@ -1,5 +1,6 @@
 package com.revature.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import org.springframework.stereotype.Component;
 
