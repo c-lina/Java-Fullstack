@@ -1,0 +1,156 @@
+<!--We can create an entire HTML skeleton by typing ! and hitting enter-->
+
+<!DOCTYPE html> <!--DOCTYPE Declaration (not considered an element). Declares what TYPE of DOCument this is -->
+
+<html lang="en"> <!--"root tag" The first element in our HTML file. All our HTML goes within these tags-->
+
+<!--The head is typically metadata. <title> lets you name your tab when you render this HTML file-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello HTML CSS</title>
+
+    <link rel="stylesheet", href="HelloHTMLCSS.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous"> 
+</head>
+
+<!--The body contains all of the actual content of your webpage. AKA our elements!-->
+<body>
+
+    <!-- h1 through h6 are "headers". h1 is biggest-->
+    <h1 style="color:rgb(45, 40, 141); font-family: cursive;">Hello HTML! We are officially front end devs styled with inline styling!</h1>
+    <h6>I am a smol header</h6>
+
+     <!--<p> is a paragraph. generic line of text-->
+    <p>I just built a new webpage</p> <p>Paragraphs are BLOCK elements</p>
+    <p>Even if block elements are on the same line, they'll have their own BLOCK</p>
+
+    <br> <!-- Line break: Creates an empty line of space-->
+    <!--<br> is a self-closing tag. no need for </br>-->
+
+    <!--<Span> is an inline element. can exist on the same line as other inline elements-->
+    <span>I am a span!</span> <span>We are INLINE ELEMENTS! :D</span>
+
+    <!--<div> is your general "division" element. We usually group elements together inside divs-->
+    <div style="color:red;">
+        <p>I am a paragraph in a div!</p>
+        <span>I am a span in a div!</span>
+    </div>
+
+    <!--------------------------------------------(Lists)-->
+
+    <h3>Our Favorite Movies:</h3>
+
+    <!--Ordered Lists! Lists items in 1, 2, 3, .... format-->
+    <ol class="list">
+        <li>Lord of the Rings</li> <!-- <li> = "list item" -->
+        <li>Godzilla</li>
+        <li>Spirited Away</li>
+        <li>Everything Everywhere All At Once</li>
+        <li>Land Before Time</li>
+    </ol>
+
+    <h4>Honorable Mentions:</h4>
+
+    <!--Unordered List! Lists items in bullter format-->
+    <ul class="list">
+        <li title="hello please scroll over me">Saving Private Ryan</li>
+        <li>Rush Hour</li>
+        <li>Jurassic Park</li>
+        <li>The Mario Movie</li>
+    </ul>
+
+    <!--TODO: tables-->
+    <table class="table table-dark table-striped table table-hover">
+        <thead> <!--This defines the table's header row (its column names)-->
+            <tr> <!--This defines a table row-->
+                <th>Pokemon Name</th>
+                <th>PokeType</th>
+                <th>TrainerName</th> <!--These define a cell in the Table's header row-->
+            </tr>
+        </thead>
+        <tbody> <!--This defines the table's body section (which also uses <tr> for every row)-->
+            <tr>
+                <td>Mudkip</td>
+                <td>Water</td>
+                <td>Ben</td>
+            </tr>
+            <tr>
+                <td>Lucario</td>
+                <td>Fighting/Steel</td>
+                <td>Lina</td>
+            </tr>
+            <tr>
+                <td>Gyarados</td>
+                <td>Water/Flying</td>
+                <td>Joseph</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!--TODO: elements for user input-->
+
+    <!--You don't have a functional front end without being able to take user input (usually)-->
+<p>Enter your username:</p>
+<input type="text" placeholder="ex: coolUsername">
+
+<p>Enter your password:</p>
+<input type="password">
+
+<p>Enter your age:</p>
+<input type="number">
+
+<h4>Choose an option:</h4>
+<!--Radio buttons only let you choose one option at once-->
+<div id="radioContainer">
+    <!--name is how we can group input buttons together. without it, we would be able to select them all-->
+    <!--id is how we can uniquely identify inputs-->
+    <di>
+        <input type="radio" name="radioGroup" id="radio1">
+        <label for="radio1">I WILL NOT CHOOSE!</label>
+    </di>
+    <div>
+        <input type="radio" name="radioGroup" id="radio2">
+        <label for="radio2">I WILL CHOOSE!</label>
+    </div>
+</div>
+
+<!--Checkboxes allow you to seelect multiple options at once-->
+<h4>How are you feeling?</h4>
+<div>
+    <div>
+        <input type="checkbox" name="checkGroup" id="check1">
+        <label for="check1">Sad</label>
+    </div>
+    <div>
+        <input type="checkbox" name="checkGroup" id="check2">
+        <label for="check2">Happy</label>
+    </div>
+    <div>
+        <input type="checkbox" name="checkGroup" id="check3">
+        <label for="check3">Indifferent</label>
+    </div>
+</div>
+
+<br>
+
+<!--Select elements let us define dropdown boxes-->
+<!--Disabled makes an option unchooseable-->
+<!--"Selected" selects an option by default-->
+<select name="names" id="names" style="color:blue">
+    <option value="" disabled selected>Choose a name:</option>
+    <option value="Vincent">Vincent</option>
+    <option value="Hugo">Hugo</option>
+    <option value="Bob">Bob</option>
+    <option value="Linda">Linda</option>
+</select>
+
+<br><br>
+
+<button class="btn btn-success">Hello, I am a button that doesn't do anything</button>
+
+<br><br><br>
+
+</body>
+
+</html>

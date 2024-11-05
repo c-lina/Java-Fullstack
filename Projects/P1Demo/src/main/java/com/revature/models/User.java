@@ -45,9 +45,9 @@ public class User {
 
      */
 
-    @OneToMany(mappedBy = "userId", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
-    private List<User> pets;
+    private List<Pet> pets;
 
 
     //boilerplate-------------------------------no args, all args, getter/setter/ toString
@@ -94,11 +94,11 @@ public class User {
         this.role = role;
     }
 
-    public List<User> getPets() {
+    public List<Pet> getPets() {
         return pets;
     }
 
-    public void setPets(List<User> pets) {
+    public void setPets(List<Pet> pets) {
         this.pets = pets;
     }
 

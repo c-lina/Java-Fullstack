@@ -5,6 +5,7 @@ import com.revature.DAOs.PetDAO;
 import com.revature.models.DTOs.IncomingPetDTO;
 import com.revature.models.Pet;
 import com.revature.services.PetService;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -46,4 +47,11 @@ public class PetController {
         //Returns a 400 (BAD REQUEST) status code with the exception message
         return ResponseEntity.badRequest().body(e.getMessage());
     }
+
+    //A method to get all pets by userId
+    @GetMapping("/user/{userId}")
+    public ResponseEntity<List<Pet>> getPetsByUserId(@PathVariable int userId) {
+        return ResponseEntity.ok(petService.getPetsByUserId(userId));
+    }
+
 }

@@ -1,10 +1,14 @@
 package com.revature.services;
 
+import com.revature.DAOs.PetDAO;
 import com.revature.DAOs.UserDAO;
+import com.revature.models.DTOs.OutgoingUserDTO;
+import com.revature.models.Pet;
 import com.revature.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /*
@@ -51,9 +55,18 @@ public class UserService {
     }
 
     //This methods gets all users from the DB
-    public List<User> getAllUsers() {
+    public List<OutgoingUserDTO> getAllUsers() {
         //findALL() is a JPA method that returns all records in a table
-        return userDAO.findAll();
+        List<User> users= userDAO.findAll();
+
+        //Empty List of GetUserDTOs to be filled by the processing below
+        List<OutgoingUserDTO> outUsers = new ArrayList<>();
+        for(User user: users) {
+            outUsers.add(new OutgoingUserDTO(user.getUser_id(), user.getUsername(), user.getRole() ));
+        }
+
+        //return our list of outgoing users
+        return outUsers;
 
         //Not much error handing in a get all... maybe checking to see if it's empty
     }
@@ -85,6 +98,14 @@ public class UserService {
 
         //Return the newest version of the user object! Send it to the controller
         return u;
+    }
+
+    public User deleteByUserId(int userId) {
+        User user = userDAO.findById(userId).orElseThrow(() ->
+                new IllegalArgumentException("No user found with id: " + userId));
+
+        userDAO.deleteById(userId);
+        return user;
     }
 
 

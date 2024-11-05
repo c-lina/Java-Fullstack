@@ -1,5 +1,6 @@
 package com.revature.controllers;
 
+import com.revature.models.DTOs.OutgoingUserDTO;
 import com.revature.models.User;
 import com.revature.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,9 +40,9 @@ public class UserController {
 
     //GET request to all Users
     @GetMapping //GET request to all Users
-    public ResponseEntity<List<User>> getAllUsers() {
+    public ResponseEntity<List<OutgoingUserDTO>> getAllUsers() {
         //not much error handling needed in a get all
-        List<User> allUsers = userService.getAllUsers();
+        List<OutgoingUserDTO> allUsers = userService.getAllUsers();
 
         //send the users back with a 200 status code
         return ResponseEntity.ok(allUsers);
@@ -54,7 +55,7 @@ public class UserController {
         return ResponseEntity.ok(userService.getUserByUsername(username));
     }
 
-    @PatchMapping("/{id}")
+    @PatchMapping("/{UserId}")
     public ResponseEntity<User> updateUserRole(@PathVariable int UserId, @RequestBody String newRole) {
 
         return ResponseEntity.status(202).body(userService.updateUserRole(UserId, newRole));
@@ -66,6 +67,11 @@ public class UserController {
     public ResponseEntity<String> handleIllegalArgument(IllegalArgumentException e) {
         //Return a 400 Bad request
         return ResponseEntity.status(400).body(e.getMessage());
+    }
+
+    @DeleteMapping("/{userId}")
+    public ResponseEntity<User> deleteUserById(@PathVariable int userId) {
+        return ResponseEntity.ok(userService.deleteByUserId(userId));
     }
 
 

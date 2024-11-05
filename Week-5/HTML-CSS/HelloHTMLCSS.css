@@ -1,0 +1,35 @@
+/*Every <p> element will get this styling */
+p {
+    color:mediumblue;
+    text-align: center;
+}
+
+/*Every element with an id of radioGroup will get this */
+
+#radioContainer {
+    border: double 6px pink;
+    border-radius: 25px;
+    padding:5px; /*padding gives us space between content and border*/
+}
+
+.list {
+    background-color: bisque;
+    color: blueviolet;
+    font-family: fantasy;
+    font-weight: bolder;
+    font-style:italic;
+    font-size: larger;
+    margin:50px; /*Margin makes space between an element and it's neighbors*/
+}
+
+/*Universal sector - EVERY element will get this style*/
+* {
+    background-color:oldlace;
+}
+
+/*using flexbox on the radio container class*/
+#radioContainer {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
