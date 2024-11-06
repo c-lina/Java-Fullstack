@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="360bffe6-3fb3-44b6-9eeb-3179096a83ea" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/DAOs/PetDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/DAOs/UserDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/P1Demo/P1DemoApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/controllers/PetController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/controllers/UserController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/models/DTOs/IncomingPetDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/models/DTOs/OutgoingUserDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/models/Pet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/models/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/services/PetService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/services/UserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/revature/P1Demo/P1DemoApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project0Demo/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project0Demo/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project0Demo/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project0Demo/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project0Demo/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project0Demo/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project0Demo/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project0Demo/src/main/java/com/revature/DAOs/AuthDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project0Demo/src/main/java/com/revature/DAOs/EmployeeDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project0Demo/src/main/java/com/revature/DAOs/EmployeeDAOInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project0Demo/src/main/java/com/revature/DAOs/RoleDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project0Demo/src/main/java/com/revature/DAOs/RoleDAOInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project0Demo/src/main/java/com/revature/LauncherNEW.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project0Demo/src/main/java/com/revature/LauncherOLD.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project0Demo/src/main/java/com/revature/controllers/AutoController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project0Demo/src/main/java/com/revature/controllers/EmployeeController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project0Demo/src/main/java/com/revature/controllers/RoleController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project0Demo/src/main/java/com/revature/models/Employee.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project0Demo/src/main/java/com/revature/models/LoginDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project0Demo/src/main/java/com/revature/models/Role.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project0Demo/src/main/java/com/revature/utils/ConnectionUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project1/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project1/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project1/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project1/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project1/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project1/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project1/src/main/java/com/revature/DAOs/TicketDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project1/src/main/java/com/revature/DAOs/UserDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project1/src/main/java/com/revature/DTOs/IncomingTicketDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project1/src/main/java/com/revature/DTOs/LoginDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project1/src/main/java/com/revature/DTOs/OutgoingUserDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project1/src/main/java/com/revature/Project1/Project1Application.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project1/src/main/java/com/revature/controllers/LoginController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project1/src/main/java/com/revature/controllers/TicketController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project1/src/main/java/com/revature/controllers/UserController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project1/src/main/java/com/revature/models/Ticket.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project1/src/main/java/com/revature/models/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project1/src/main/java/com/revature/services/LoginService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project1/src/main/java/com/revature/services/TicketService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project1/src/main/java/com/revature/services/UserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project1/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project1/src/test/java/com/revature/Project1/Project1ApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project_0_Actual/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project_0_Actual/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project_0_Actual/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project_0_Actual/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project_0_Actual/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project_0_Actual/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project_0_Actual/Project_0.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project_0_Actual/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project_0_Actual/src/main/java/com/revature/Controllers/CardController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project_0_Actual/src/main/java/com/revature/Controllers/DuelistController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project_0_Actual/src/main/java/com/revature/DAOs/CardDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project_0_Actual/src/main/java/com/revature/DAOs/CardDaoInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project_0_Actual/src/main/java/com/revature/DAOs/DuelistDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project_0_Actual/src/main/java/com/revature/DAOs/DuelistDAOInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project_0_Actual/src/main/java/com/revature/LauncherNEW.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project_0_Actual/src/main/java/com/revature/LauncherOLD.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project_0_Actual/src/main/java/com/revature/models/Card.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project_0_Actual/src/main/java/com/revature/models/Duelist.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project_0_Actual/src/main/java/com/revature/utils/ConnectionUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Week-5/hello-react/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Week-5/hello-react/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Week-5/hello-react/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Week-5/hello-react/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Week-5/hello-react/public/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Week-5/hello-react/public/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Week-5/hello-react/public/logo192.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Week-5/hello-react/public/logo512.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Week-5/hello-react/public/manifest.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Week-5/hello-react/public/robots.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Week-5/hello-react/src/App.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Week-5/hello-react/src/App.test.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Week-5/hello-react/src/App.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Week-5/hello-react/src/Components/CalculationComponent/CalculationComponent.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Week-5/hello-react/src/Components/CalculationComponent/CalculationComponent.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Week-5/hello-react/src/Components/ChildComponent/ChildComponent.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Week-5/hello-react/src/Components/EmployeeComponent/EmployeeComponent.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Week-5/hello-react/src/Components/FirstComponent/FirstComponent.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Week-5/hello-react/src/Components/ParentComponent/ParentComponent.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Week-5/hello-react/src/Components/UserComponent/UserComponent.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Week-5/hello-react/src/Components/UserComponent/UserInfoComponent.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Week-5/hello-react/src/Components/UserComponent/UserInfoStyle.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Week-5/hello-react/src/Interfaces/UserInterface.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Week-5/hello-react/src/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Week-5/hello-react/src/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Week-5/hello-react/src/logo.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Week-5/hello-react/src/react-app-env.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Week-5/hello-react/src/reportWebVitals.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Week-5/hello-react/src/setupTests.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Week-5/hello-react/tsconfig.json" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
+  <component name="ProjectId" id="2ntBKKqgSmLdrrEkzFFWO9fDr81" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.P1DemoApplication.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.P1DemoApplicationTests.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.P1DemoApplicationTests.testInsertPetWithMockito.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/linachen/Documents/Demos/Projects/P1Demo&quot;
+  }
+}</component>
+  <component name="RunManager">
+    <configuration name="P1DemoApplicationTests.testInsertPetWithMockito" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="P1Demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.revature.P1Demo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.revature.P1Demo" />
+      <option name="MAIN_CLASS_NAME" value="com.revature.P1Demo.P1DemoApplicationTests" />
+      <option name="METHOD_NAME" value="testInsertPetWithMockito" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.P1DemoApplicationTests.testInsertPetWithMockito" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="360bffe6-3fb3-44b6-9eeb-3179096a83ea" name="Changes" comment="" />
+      <created>1729782426726</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1729782426726</updated>
+    </task>
+    <servers />
+  </component>
+</project>
