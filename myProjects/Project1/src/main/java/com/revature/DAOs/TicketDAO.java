@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface TicketDAO extends JpaRepository<Ticket, Integer> {
     List<Ticket> findAllByStatus(String status);
+    List<Ticket> findByUserUserId(int id);
 }

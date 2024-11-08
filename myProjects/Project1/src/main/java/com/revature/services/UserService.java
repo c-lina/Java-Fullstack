@@ -1,9 +1,7 @@
 package com.revature.services;
 
-import com.revature.DAOs.TicketDAO;
 import com.revature.DAOs.UserDAO;
-import com.revature.DTOs.OutgoingUserDTO;
-import com.revature.models.Ticket;
+import com.revature.models.DTOs.OutgoingUserDTO;
 import com.revature.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,7 +23,7 @@ public class UserService {
         List<OutgoingUserDTO> outgoingUsers = new ArrayList<>();
         List<User> userlist = userDAO.findAll();
         for(User user: userlist) {
-            outgoingUsers.add(new OutgoingUserDTO(user.getFirstName(), user.getLastName(), user.getUsername()));
+            outgoingUsers.add(new OutgoingUserDTO(user.getUserId(), user.getFirstName(), user.getLastName(), user.getUsername()));
         }
 
         return outgoingUsers;
@@ -58,7 +56,5 @@ public class UserService {
 
         return user.get().getUsername() + " has been deleted";
     }
-
-
 
 }

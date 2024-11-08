@@ -1,4 +1,4 @@
-package com.revature.DTOs;
+package com.revature.models.DTOs;
 
 import org.springframework.stereotype.Component;
 

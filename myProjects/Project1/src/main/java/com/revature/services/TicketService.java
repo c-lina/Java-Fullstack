@@ -2,15 +2,16 @@ package com.revature.services;
 
 import com.revature.DAOs.TicketDAO;
 import com.revature.DAOs.UserDAO;
-import com.revature.DTOs.IncomingTicketDTO;
-import com.revature.DTOs.IncomingTicketDTO;
-import com.revature.DTOs.OutgoingUserDTO;
+import com.revature.models.DTOs.IncomingTicketDTO;
+import com.revature.models.DTOs.OutgoingTicketDTO;
+import com.revature.models.DTOs.OutgoingUserDTO;
 import com.revature.models.Ticket;
 import com.revature.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,7 +30,7 @@ public class TicketService {
         return ticketDAO.findAll();
     }
 
-    public Ticket addTicket(IncomingTicketDTO newticket) {
+    public OutgoingTicketDTO addTicket(IncomingTicketDTO newticket) {
         Ticket ticket = new Ticket(0, newticket.getDescription(), newticket.getAmount(), newticket.getStatus(), null);
         //checks to see if it's set to an existing person
         Optional<User> user = userDAO.findById(newticket.getUserIdFK());
@@ -37,9 +38,13 @@ public class TicketService {
             throw new IllegalArgumentException("That user does not exist");
         }
         ticket.setUser(user.get());
+        Ticket t = ticketDAO.save(ticket);
 
-        ticketDAO.save(ticket);
-        return ticket;
+        OutgoingUserDTO outgoingUser = new OutgoingUserDTO(user.get().getUserId(), user.get().getFirstName(), user.get().getLastName(), user.get().getUsername());
+        OutgoingTicketDTO outgoingTicket = new OutgoingTicketDTO(t.getTicketId(), newticket.getDescription(), newticket.getAmount(), newticket.getStatus(), outgoingUser);
+
+
+        return outgoingTicket;
 
     }
 
@@ -48,6 +53,7 @@ public class TicketService {
         if(ticket.isEmpty()) {
             throw new IllegalArgumentException("That ticket does not exist");
         }
+
         //Not needed but wanted to make casing irrelevant
         newStatus = newStatus.toUpperCase();
         String newStats = "" + newStatus.charAt(0);
@@ -67,18 +73,35 @@ public class TicketService {
         }
     }
 
-    public List<Ticket> allPendingTickets() {
-        return ticketDAO.findAllByStatus("Pending");
+    public List<OutgoingTicketDTO> allPendingTickets() {
+        List<Ticket> ticketList = ticketDAO.findAllByStatus("Pending");
+
+        List<OutgoingTicketDTO> outgoingTicketList = new ArrayList<>();
+        for(Ticket ticket: ticketList) {
+            User user = ticket.getUser();
+            OutgoingUserDTO outgoingUser = new OutgoingUserDTO(user.getUserId(), user.getFirstName(), user.getLastName(), user.getUsername());
+            outgoingTicketList.add(new OutgoingTicketDTO(ticket.getTicketId(), ticket.getDescription(), ticket.getAmount(), ticket.getStatus(), outgoingUser));
+        }
+        return outgoingTicketList;
 
     }
 
-    public List<Ticket> getTicketListByUserId(int id) {
+    public List<OutgoingTicketDTO> getTicketListByUserId(int id) {
         Optional<User> user = userDAO.findById(id);
         if(user.isEmpty()) {
             throw new IllegalArgumentException("Cannot find employee id: " + id);
         }
 
-        return user.get().getTicketList();
+        List<Ticket> ticketList = ticketDAO.findByUserUserId(id);
+
+        List<OutgoingTicketDTO> outgoingTicketList = new ArrayList<>();
+
+        for(Ticket ticket: ticketList) {
+            OutgoingUserDTO outgoingUser = new OutgoingUserDTO(user.get().getUserId(), user.get().getFirstName(), user.get().getLastName(), user.get().getUsername());
+            outgoingTicketList.add(new OutgoingTicketDTO(ticket.getTicketId(), ticket.getDescription(), ticket.getAmount(), ticket.getStatus(), outgoingUser));
+        }
+
+        return outgoingTicketList;
     }
 
 

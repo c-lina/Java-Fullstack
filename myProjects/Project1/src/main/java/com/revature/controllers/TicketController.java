@@ -1,10 +1,11 @@
 package com.revature.controllers;
 
-import com.revature.DTOs.IncomingTicketDTO;
+import com.revature.models.DTOs.IncomingTicketDTO;
+import com.revature.models.DTOs.OutgoingTicketDTO;
+import com.revature.models.DTOs.OutgoingUserDTO;
 import com.revature.models.Ticket;
 import com.revature.services.TicketService;
 import com.revature.services.UserService;
-import jakarta.servlet.http.HttpServlet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -31,13 +32,13 @@ public class TicketController {
     }
 
     @PostMapping
-    public ResponseEntity<Ticket> registerTicket(@RequestBody IncomingTicketDTO newTicket) {
+    public ResponseEntity<OutgoingTicketDTO> registerTicket(@RequestBody IncomingTicketDTO newTicket) {
         System.out.println(newTicket);
         return ResponseEntity.ok().body(ticketService.addTicket(newTicket));
     }
 
     @GetMapping("/user/{id}")
-    public ResponseEntity<List<Ticket>> getTicketsById(@PathVariable int id) {
+    public ResponseEntity<List<OutgoingTicketDTO>> getTicketsById(@PathVariable int id) {
         return ResponseEntity.ok().body(ticketService.getTicketListByUserId(id));
     }
 
@@ -47,8 +48,8 @@ public class TicketController {
     }
 
     @GetMapping("/status/pending")
-    public ResponseEntity<List<Ticket>> getAllPending() {
-        List<Ticket> ticketList = ticketService.allPendingTickets();
+    public ResponseEntity<List<OutgoingTicketDTO>> getAllPending() {
+        List<OutgoingTicketDTO> ticketList = ticketService.allPendingTickets();
         return ResponseEntity.ok().body(ticketList);
     }
 

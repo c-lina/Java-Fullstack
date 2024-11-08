@@ -1,11 +1,11 @@
-package com.revature.DTOs;
+package com.revature.models.DTOs;
 
 import org.springframework.stereotype.Component;
 
 @Component
 public class IncomingTicketDTO {
     private String description;
-    private int amount;
+    private double amount;
     private String status;
     private int userIdFK;
 
@@ -13,18 +13,18 @@ public class IncomingTicketDTO {
         this.status = "Pending";
     }
 
-    public IncomingTicketDTO(String description, int amount, String status, int userIdFK) {
+    public IncomingTicketDTO(String description, double amount, String status, int userIdFK) {
         this.description = description;
         this.amount = amount;
         this.status = status;
         this.userIdFK = userIdFK;
     }
 
-    public int getAmount() {
+    public double getAmount() {
         return amount;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(double amount) {
         this.amount = amount;
     }
 

@@ -1,30 +1,19 @@
-package com.revature.models;
+package com.revature.models.DTOs;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.*;
 import org.springframework.stereotype.Component;
 
 @Component
-@Entity
-@Table(name = "tickets")
-public class Ticket {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+public class OutgoingTicketDTO {
     private int ticketId;
     private String description;
-    @Column(columnDefinition = "NUMERIC(10, 2)")
     private double amount;
     private String status;
+    private OutgoingUserDTO user;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "UserIdFK")
-    private User user;
-
-    public Ticket() {
-        this.status = "Pending";
+    public OutgoingTicketDTO() {
     }
 
-    public Ticket(int ticketId, String description, double amount, String status, User user) {
+    public OutgoingTicketDTO(int ticketId, String description, double amount, String status, OutgoingUserDTO user) {
         this.ticketId = ticketId;
         this.description = description;
         this.amount = amount;
@@ -48,22 +37,6 @@ public class Ticket {
         this.description = description;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
     public double getAmount() {
         return amount;
     }
@@ -72,14 +45,29 @@ public class Ticket {
         this.amount = amount;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public OutgoingUserDTO getUser() {
+        return user;
+    }
+
+    public void setUser(OutgoingUserDTO user) {
+        this.user = user;
+    }
+
     @Override
     public String toString() {
-        return "Ticket{" +
-                "ticketId=" + ticketId +
-                ", description='" + description + '\'' +
+        return "OutoingTicketDTO{" +
+                "description='" + description + '\'' +
                 ", amount=" + amount +
                 ", status='" + status + '\'' +
-                ", user=" + user +
+                ", outgoingUserDTO=" + user +
                 '}';
     }
 }

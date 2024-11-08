@@ -1,9 +1,9 @@
 package com.revature.controllers;
 
-import com.revature.DTOs.LoginDTO;
+import com.revature.models.DTOs.LoginDTO;
 import com.revature.models.User;
 import com.revature.services.LoginService;
-import org.springframework.beans.factory.annotation.Autowired;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,6 +15,8 @@ public class LoginController {
     public LoginController(LoginService loginService) {
         this.loginService = loginService;
     }
+
+    public static HttpSession session;
 
     @PostMapping
     public ResponseEntity<User> login(@RequestBody LoginDTO loginDTO) {

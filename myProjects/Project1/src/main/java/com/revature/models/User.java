@@ -44,7 +44,6 @@ public class User {
         this.role = "Employee";
     }
 
-
     public String getFirstName() {
         return firstName;
     }

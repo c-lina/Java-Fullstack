@@ -1,4 +1,4 @@
-package com.revature.DTOs;
+package com.revature.models.DTOs;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.CascadeType;
@@ -10,21 +10,27 @@ import java.util.List;
 
 @Component
 public class OutgoingUserDTO {
+    private int userId;
     private String firstName;
     private String lastName;
     private String username;
 
-    @OneToMany(mappedBy = "username", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JsonIgnore
-    private List<OutgoingUserDTO> outgoingUserDTO;
-
     public OutgoingUserDTO() {
     }
 
-    public OutgoingUserDTO(String firstName, String lastName, String username) {
+    public OutgoingUserDTO(int userId, String firstName, String lastName, String username) {
+        this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public String getFirstName() {
