@@ -19,8 +19,8 @@ public class LoginController {
     public static HttpSession session;
 
     @PostMapping
-    public ResponseEntity<User> login(@RequestBody LoginDTO loginDTO) {
-        return ResponseEntity.ok().body(loginService.login(loginDTO));
+    public ResponseEntity<User> login(@RequestBody LoginDTO loginDTO, HttpSession session) {
+        return ResponseEntity.ok().body(loginService.login(loginDTO, session));
     }
 
     //Exception Handling

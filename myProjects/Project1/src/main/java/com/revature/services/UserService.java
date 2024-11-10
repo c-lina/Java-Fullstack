@@ -2,6 +2,7 @@ package com.revature.services;
 
 import com.revature.DAOs.UserDAO;
 import com.revature.models.DTOs.OutgoingUserDTO;
+import com.revature.models.DTOs.PasswordChangeDTO;
 import com.revature.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,7 +24,7 @@ public class UserService {
         List<OutgoingUserDTO> outgoingUsers = new ArrayList<>();
         List<User> userlist = userDAO.findAll();
         for(User user: userlist) {
-            outgoingUsers.add(new OutgoingUserDTO(user.getUserId(), user.getFirstName(), user.getLastName(), user.getUsername()));
+            outgoingUsers.add(new OutgoingUserDTO(user.getUserId(), user.getFirstName(), user.getLastName(), user.getUsername(), user.getRole()));
         }
 
         return outgoingUsers;
@@ -55,6 +56,35 @@ public class UserService {
         userDAO.deleteById(id);
 
         return user.get().getUsername() + " has been deleted";
+    }
+
+    public String changePassword(int id, PasswordChangeDTO newPassword) {
+        Optional<User> user = userDAO.findById(id);
+        if(user.isEmpty()) {
+            throw new IllegalArgumentException("Cannot find employee id: " + id);
+        }
+        //checks to see if the current password entered is correct
+        if(user.get().getPassword().equals(newPassword.getCurrentPassword())) {
+            if(newPassword.getNewPassword() == null || newPassword.getNewPassword().isEmpty()) {
+                throw new IllegalArgumentException("Your new password cannot be empty!");
+            }
+            else if(user.get().getPassword().equals(newPassword.getNewPassword())) {
+                throw new IllegalArgumentException("Your new password cannot identical to your current password");
+            }
+            else {
+                if (newPassword.getNewPassword().equals(newPassword.getConfirmPassword())) {
+                    user.get().setPassword(newPassword.getNewPassword());
+                    userDAO.save(user.get());
+                    return (user.get().getUsername() + "'s password has been changed");
+                } else {
+                    throw new IllegalArgumentException("The passwords do not match!");
+                }
+            }
+        }
+        else {
+            throw new IllegalArgumentException("The current password entered is incorrect");
+        }
+
     }
 
 }

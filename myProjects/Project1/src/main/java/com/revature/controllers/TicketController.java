@@ -1,5 +1,6 @@
 package com.revature.controllers;
 
+import com.revature.aspects.ManagerOnly;
 import com.revature.models.DTOs.IncomingTicketDTO;
 import com.revature.models.DTOs.OutgoingTicketDTO;
 import com.revature.models.DTOs.OutgoingUserDTO;
@@ -25,9 +26,10 @@ public class TicketController {
     }
 
     //This would be for managers to view only
+    @ManagerOnly
     @GetMapping
-    public ResponseEntity<List<Ticket>> getAllTickets() {
-        List<Ticket> ticketList = ticketService.getTickets();
+    public ResponseEntity<List<OutgoingTicketDTO>> getAllTickets() {
+        List<OutgoingTicketDTO> ticketList = ticketService.getTickets();
         return ResponseEntity.ok().body(ticketList);
     }
 
@@ -42,11 +44,13 @@ public class TicketController {
         return ResponseEntity.ok().body(ticketService.getTicketListByUserId(id));
     }
 
+    @ManagerOnly
     @PatchMapping("/status/{id}")
     public ResponseEntity<String> changeStatus(@PathVariable int id, @RequestBody String newStatus) {
         return ResponseEntity.status(202).body(ticketService.changeStatus(id, newStatus));
     }
 
+    @ManagerOnly
     @GetMapping("/status/pending")
     public ResponseEntity<List<OutgoingTicketDTO>> getAllPending() {
         List<OutgoingTicketDTO> ticketList = ticketService.allPendingTickets();

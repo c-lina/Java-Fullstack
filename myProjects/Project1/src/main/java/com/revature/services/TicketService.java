@@ -2,11 +2,13 @@ package com.revature.services;
 
 import com.revature.DAOs.TicketDAO;
 import com.revature.DAOs.UserDAO;
+import com.revature.controllers.LoginController;
 import com.revature.models.DTOs.IncomingTicketDTO;
 import com.revature.models.DTOs.OutgoingTicketDTO;
 import com.revature.models.DTOs.OutgoingUserDTO;
 import com.revature.models.Ticket;
 import com.revature.models.User;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,8 +28,15 @@ public class TicketService {
         this.ticketDAO = ticketDAO;
     }
 
-    public List<Ticket> getTickets() {
-        return ticketDAO.findAll();
+    public List<OutgoingTicketDTO> getTickets() {
+        List<Ticket> ticketList = ticketDAO.findAll();
+        List<OutgoingTicketDTO> outgoingTicketList = new ArrayList<>();
+        for(Ticket ticket: ticketList) {
+            User user = ticket.getUser();
+            OutgoingUserDTO outgoingUser = new OutgoingUserDTO(user.getUserId(), user.getFirstName(), user.getLastName(), user.getUsername(), user.getRole());
+            outgoingTicketList.add(new OutgoingTicketDTO(ticket.getTicketId(), ticket.getDescription(), ticket.getAmount(), ticket.getStatus(), outgoingUser));
+        }
+        return outgoingTicketList;
     }
 
     public OutgoingTicketDTO addTicket(IncomingTicketDTO newticket) {
@@ -40,7 +49,7 @@ public class TicketService {
         ticket.setUser(user.get());
         Ticket t = ticketDAO.save(ticket);
 
-        OutgoingUserDTO outgoingUser = new OutgoingUserDTO(user.get().getUserId(), user.get().getFirstName(), user.get().getLastName(), user.get().getUsername());
+        OutgoingUserDTO outgoingUser = new OutgoingUserDTO(user.get().getUserId(), user.get().getFirstName(), user.get().getLastName(), user.get().getUsername(), user.get().getRole());
         OutgoingTicketDTO outgoingTicket = new OutgoingTicketDTO(t.getTicketId(), newticket.getDescription(), newticket.getAmount(), newticket.getStatus(), outgoingUser);
 
 
@@ -79,7 +88,7 @@ public class TicketService {
         List<OutgoingTicketDTO> outgoingTicketList = new ArrayList<>();
         for(Ticket ticket: ticketList) {
             User user = ticket.getUser();
-            OutgoingUserDTO outgoingUser = new OutgoingUserDTO(user.getUserId(), user.getFirstName(), user.getLastName(), user.getUsername());
+            OutgoingUserDTO outgoingUser = new OutgoingUserDTO(user.getUserId(), user.getFirstName(), user.getLastName(), user.getUsername(), user.getRole());
             outgoingTicketList.add(new OutgoingTicketDTO(ticket.getTicketId(), ticket.getDescription(), ticket.getAmount(), ticket.getStatus(), outgoingUser));
         }
         return outgoingTicketList;
@@ -87,6 +96,12 @@ public class TicketService {
     }
 
     public List<OutgoingTicketDTO> getTicketListByUserId(int id) {
+        if(!LoginController.session.getAttribute("role").equals("Manager")) {
+            if(LoginController.session.getAttribute("userId") != (Integer) id) {
+                throw new IllegalArgumentException("You do not have permission to do this");
+            }
+        }
+
         Optional<User> user = userDAO.findById(id);
         if(user.isEmpty()) {
             throw new IllegalArgumentException("Cannot find employee id: " + id);
@@ -97,7 +112,7 @@ public class TicketService {
         List<OutgoingTicketDTO> outgoingTicketList = new ArrayList<>();
 
         for(Ticket ticket: ticketList) {
-            OutgoingUserDTO outgoingUser = new OutgoingUserDTO(user.get().getUserId(), user.get().getFirstName(), user.get().getLastName(), user.get().getUsername());
+            OutgoingUserDTO outgoingUser = new OutgoingUserDTO(user.get().getUserId(), user.get().getFirstName(), user.get().getLastName(), user.get().getUsername(), user.get().getRole());
             outgoingTicketList.add(new OutgoingTicketDTO(ticket.getTicketId(), ticket.getDescription(), ticket.getAmount(), ticket.getStatus(), outgoingUser));
         }
 
