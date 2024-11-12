@@ -34,7 +34,6 @@ export const ChangePassword:React.FC = () => {
         <Container>
             <div>
                 <h2>User Settings</h2>
-                <h3 {...store.loggedInUser}></h3>
             </div>
             <Form.Control
                 type="password"
@@ -54,8 +53,13 @@ export const ChangePassword:React.FC = () => {
                 placeholder="confirm password"
                 onChange={storeValues}
             />
-            <Button onClick={() => {navigate("../")}}>Home</Button>
             <Button onClick={Change}>Submit</Button>
+            <br></br>
+            <div>
+                <br></br>
+                <Button onClick={() => {navigate("/" + store.loggedInUser.role)}}>Back</Button>
+                <Button onClick={() => {navigate("/")}}>Logout</Button>
+            </div>
         </Container>
     )
 }

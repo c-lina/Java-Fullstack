@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Container } from "react-bootstrap"
+import { Button, Container } from "react-bootstrap"
 import { useNavigate } from "react-router-dom"
 import { TicketTable } from "./TicketTable";
 
@@ -23,6 +23,8 @@ export const AllPendingTicket:React.FC = () => {
     return(
         <Container>
             <TicketTable tickets={ticket}></TicketTable>
+            <Button onClick={() => {navigate("/Manager")}}>Back</Button>
+            <Button onClick={() => {navigate("/")}}>Logout</Button>
         </Container>
     )
 }

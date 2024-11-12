@@ -12,21 +12,29 @@ import { ManagerSearchByUserId } from './Tickets/ManagerSearchByUserId';
 import { ChangePassword } from './Users/ChangePassword';
 import { AllPendingTicket } from './Tickets/AllPendingTickets';
 import { ChangeStatus } from './Tickets/ChangeStatus';
+import { CreateTicket } from './Tickets/CreateTicket';
+import { PendingTicketsByUserId } from './Tickets/PendingTicketsByUserId';
+import { ManagerToC } from './ToC/ManagerToC';
+import { EmployeeToC } from './ToC/EmployeeToC';
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
+          <Route path="/Manager" element={<ManagerToC/>}/>
+          <Route path="/Employee" element={<EmployeeToC/>}/>
           <Route path="" element={<WelcomeComponent/>}/>
           <Route path="/register" element={<RegisterUser/>}/>
           <Route path="/login" element={<LoginComponent/>}/>
           <Route path="/users" element={<AllUser/>}/>
+          <Route path="/tickets/create" element={<CreateTicket/>}/>
           <Route path="/tickets" element={<AllTickets/>}/>
           <Route path="/tickets/user/" element={<TicketsByUserId/>}/>
           <Route path="/tickets/manager/" element={<ManagerSearchByUserId/>}/>
           <Route path="/users/update" element={<ChangePassword/>}/>
-          <Route path="/tickets/status" element={<AllPendingTicket/>}/>
+          <Route path="/tickets/status/pending" element={<AllPendingTicket/>}/>
+          <Route path="/tickets/status/pending/user" element={<PendingTicketsByUserId/>}/>
           <Route path="/tickets/status/update" element={<ChangeStatus/>}/>
         </Routes>
       </BrowserRouter>

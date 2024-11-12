@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Container, Form } from "react-bootstrap"
+import { Button, Container, Form } from "react-bootstrap"
 import { useNavigate } from "react-router-dom"
 import { TicketTable } from "./TicketTable";
 import 'bootstrap/dist/css/bootstrap.css';
@@ -24,6 +24,8 @@ export const AllTickets:React.FC = () => {
     return(
         <Container>
             <TicketTable tickets={ticket}></TicketTable>
+            <Button onClick={() => {navigate("/Manager")}}>Back</Button>
+            <Button onClick={() => {navigate("/")}}>Logout</Button>
         </Container>
     )
 }

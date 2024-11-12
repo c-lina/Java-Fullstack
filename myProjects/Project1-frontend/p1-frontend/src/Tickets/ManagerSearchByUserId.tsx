@@ -1,4 +1,4 @@
-import { Container, Form } from "react-bootstrap"
+import { Button, Container, Form } from "react-bootstrap"
 import 'bootstrap/dist/css/bootstrap.css';
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -35,6 +35,8 @@ export const ManagerSearchByUserId:React.FC = () => {
                 />
             </div>
             <TicketTable tickets={ticket}></TicketTable>
+            <Button onClick={() => {navigate("/Manager")}}>Back</Button>
+            <Button onClick={() => {navigate("/")}}>Logout</Button>
         </Container>
     )
 }

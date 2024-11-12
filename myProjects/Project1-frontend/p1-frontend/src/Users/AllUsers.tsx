@@ -17,16 +17,14 @@ export const AllUser:React.FC = () => {
     const getAllUsers = async() => {
         const response = await axios.get("http://localhost:7878/users")
         .then((response) => {setUser(response.data)})
+        .catch((error) => {})
     }
 
     return(
         <Container>
             <UserTable users={user}></UserTable>
-            <Button onClick={() => {navigate("/tickets")}}>All Tickets</Button>
-            <Button onClick={() => {navigate("/tickets/status")}}>All Pending Tickets</Button>
-            <Button onClick={() => {navigate("/tickets/manager")}}>Ticket By ID</Button>
-            <Button onClick={() => {navigate("/users/update")}}>Change Password</Button>
-            <Button onClick={() => {navigate("/tickets/status/update")}}>Change Ticket Status</Button>
+            <Button onClick={() => {navigate("/Manager")}}>Back</Button>
+            <Button onClick={() => {navigate("/")}}>Logout</Button>
         </Container>
     )
 }

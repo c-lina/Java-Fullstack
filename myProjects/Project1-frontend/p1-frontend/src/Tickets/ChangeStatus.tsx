@@ -13,13 +13,11 @@ export const ChangeStatus:React.FC = () => {
     const [ticket, setTicket] = useState([]);
 
     const statusUpdate = async(value:any, decision:String) => {
-        console.log(value)
-        console.log(decision)
         const response = await axios.patch("http://localhost:7878/tickets/status/" + value, decision, {
             headers: {
                 "Content-Type": "text/plain" }})
         .then((response) => {
-            console.log(response)
+            alert("This ticket is " + decision)
         })
         .catch((error) => {console.log(error)})
     }
@@ -27,6 +25,7 @@ export const ChangeStatus:React.FC = () => {
     const storeValues = (input:any) => {
         const value = input.target.value;
         setValue(value);
+        getTicketById(value);
     }
 
     const acccepted = () => {
@@ -35,6 +34,18 @@ export const ChangeStatus:React.FC = () => {
 
     const denied = () => {
         statusUpdate(value, "Denied");
+    }
+
+    useEffect(() => {
+        getTicketById(value)
+    }, [])
+
+    const getTicketById = async(value:any) => {
+        const response = await axios.get("http://localhost:7878/tickets/" + value)
+        .then((response) => {
+            setTicket(response.data)
+        })
+        .catch((error) => {})
     }
 
     return(
@@ -47,9 +58,19 @@ export const ChangeStatus:React.FC = () => {
                     onChange={storeValues}
                 />
             </div>
-            {/* <TicketTable tickets={ticket}></TicketTable> */}
-            <Button onClick={acccepted}>Accepted</Button>
-            <Button onClick={denied}>Denied</Button>
+            <div>
+                <TicketTable tickets={ticket}></TicketTable>
+            </div>
+            <div>
+                <Button onClick={acccepted}>Accepted</Button>
+                <Button onClick={denied}>Denied</Button>
+                <br></br>
+            </div>
+            <div>
+                <br></br>
+                <Button onClick={() => {navigate("/Manager")}}>Back</Button>
+                <Button onClick={() => {navigate("/")}}>Logout</Button>
+            </div>
         </Container>
     )
 }

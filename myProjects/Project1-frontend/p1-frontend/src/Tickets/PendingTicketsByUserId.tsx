@@ -1,25 +1,26 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
 import { Button, Container } from "react-bootstrap"
 import { useNavigate } from "react-router-dom"
 import { store } from "../globalData/store";
+import { useEffect, useState } from "react";
 import { TicketTable } from "./TicketTable";
-import 'bootstrap/dist/css/bootstrap.css';
 
-export const TicketsByUserId:React.FC = () => {
+export const PendingTicketsByUserId:React.FC = () => {
     const navigate = useNavigate();
 
-    const [ticket, setTicket] = useState([])
+    const [ticket, setTicket] = useState([]);
 
     useEffect(() => {
-        getTicketsByUserId()
+        PendingTicketsById()
     }, [])
 
-    const getTicketsByUserId = async () => {
-        const response = await axios.get("http://localhost:7878/tickets/user/" + store.loggedInUser.userId)
+    const PendingTicketsById = async() => {
+        console.log(ticket)
+        const response = await axios.get("http://localhost:7878/tickets/status/pending/" + store.loggedInUser.userId)
         .then((response) => {
             setTicket(response.data)
         })
+        .catch((error) => {})
     }
 
     return(

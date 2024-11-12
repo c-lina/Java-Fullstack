@@ -69,7 +69,7 @@ public class UserService {
                 throw new IllegalArgumentException("Your new password cannot be empty!");
             }
             else if(user.get().getPassword().equals(newPassword.getNewPassword())) {
-                throw new IllegalArgumentException("Your new password cannot identical to your current password");
+                throw new IllegalArgumentException("Your new password cannot identical to your current password!");
             }
             else {
                 if (newPassword.getNewPassword().equals(newPassword.getConfirmPassword())) {

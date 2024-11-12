@@ -15,6 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/tickets")
+@CrossOrigin
 public class TicketController {
     private UserService userService;
     private TicketService ticketService;
@@ -55,6 +56,18 @@ public class TicketController {
     public ResponseEntity<List<OutgoingTicketDTO>> getAllPending() {
         List<OutgoingTicketDTO> ticketList = ticketService.allPendingTickets();
         return ResponseEntity.ok().body(ticketList);
+    }
+
+    @GetMapping("/status/pending/{id}")
+    public ResponseEntity<List<OutgoingTicketDTO>> getAllPendingById(@PathVariable int id) {
+        List<OutgoingTicketDTO> ticketList = ticketService.pendingTicketsById(id);
+        return ResponseEntity.ok().body(ticketList);
+    }
+
+    @ManagerOnly
+    @GetMapping("/{id}")
+    public ResponseEntity<List<OutgoingTicketDTO>> getTickedById(@PathVariable int id) {
+        return ResponseEntity.status(202).body(ticketService.ticketById(id));
     }
 
     @ExceptionHandler

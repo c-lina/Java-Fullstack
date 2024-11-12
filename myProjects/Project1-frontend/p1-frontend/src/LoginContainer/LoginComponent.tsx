@@ -31,10 +31,10 @@ export const LoginComponent:React.FC = () => {
                 (alert("Login Succesful! Welcome back, " + user.username))
 
                 if(store.loggedInUser.role === "Manager") {
-                    navigate("/users")
+                    navigate("/Manager")
                 }
                 else {
-                    navigate("/tickets/user")
+                    navigate("/Employee")
                 }
 
         })

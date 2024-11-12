@@ -3,6 +3,7 @@ package com.revature.services;
 import com.revature.DAOs.TicketDAO;
 import com.revature.DAOs.UserDAO;
 import com.revature.controllers.LoginController;
+import com.revature.controllers.UserController;
 import com.revature.models.DTOs.IncomingTicketDTO;
 import com.revature.models.DTOs.OutgoingTicketDTO;
 import com.revature.models.DTOs.OutgoingUserDTO;
@@ -92,7 +93,26 @@ public class TicketService {
             outgoingTicketList.add(new OutgoingTicketDTO(ticket.getTicketId(), ticket.getDescription(), ticket.getAmount(), ticket.getStatus(), outgoingUser));
         }
         return outgoingTicketList;
+    }
 
+    public List<OutgoingTicketDTO> pendingTicketsById(int id) {
+        if(!LoginController.session.getAttribute("role").equals("Manager")) {
+            if(LoginController.session.getAttribute("userId") != (Integer) id) {
+                throw new IllegalArgumentException("You do not have permission to do this");
+            }
+        }
+
+        List<Ticket> ticketList = ticketDAO.findAllByStatus("Pending");
+
+        List<OutgoingTicketDTO> outgoingTicketList = new ArrayList<>();
+        for(Ticket ticket: ticketList) {
+            User user = ticket.getUser();
+            OutgoingUserDTO outgoingUser = new OutgoingUserDTO(user.getUserId(), user.getFirstName(), user.getLastName(), user.getUsername(), user.getRole());
+            if(outgoingUser.getUserId() == id) {
+                outgoingTicketList.add(new OutgoingTicketDTO(ticket.getTicketId(), ticket.getDescription(), ticket.getAmount(), ticket.getStatus(), outgoingUser));
+            }
+        }
+        return outgoingTicketList;
     }
 
     public List<OutgoingTicketDTO> getTicketListByUserId(int id) {
@@ -116,6 +136,18 @@ public class TicketService {
             outgoingTicketList.add(new OutgoingTicketDTO(ticket.getTicketId(), ticket.getDescription(), ticket.getAmount(), ticket.getStatus(), outgoingUser));
         }
 
+        return outgoingTicketList;
+    }
+
+    public List<OutgoingTicketDTO> ticketById(int id) {
+        Optional<Ticket> ticket = ticketDAO.findById(id);
+        if(ticket.isEmpty()) {
+            throw new IllegalArgumentException("This ticket ID does not exist!");
+        }
+        User user = ticket.get().getUser();
+        OutgoingUserDTO outgoingUser = new OutgoingUserDTO(user.getUserId(), user.getFirstName(), user.getLastName(), user.getUsername(), user.getRole());
+        List<OutgoingTicketDTO> outgoingTicketList = new ArrayList<>();
+        outgoingTicketList.add(new OutgoingTicketDTO(ticket.get().getTicketId(), ticket.get().getDescription(), ticket.get().getAmount(), ticket.get().getStatus(), outgoingUser));
         return outgoingTicketList;
     }
 
